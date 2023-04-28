@@ -11,5 +11,20 @@ config_version=5
 [application]
 
 config/name="Metroidvania"
+run/main_scene="res://World/World.tscn"
 config/features=PackedStringArray("4.0", "Forward Plus")
 config/icon="res://icon.svg"
+
+[display]
+
+window/size/viewport_width=320
+window/size/viewport_height=180
+window/size/window_width_override=1280
+window/size/window_height_override=720
+window/stretch/mode="canvas_items"
+
+[rendering]
+
+textures/decals/filter=1
+textures/canvas_textures/default_texture_filter=0
+textures/canvas_textures/default_texture_repeat=1
