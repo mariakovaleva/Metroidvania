@@ -1,77 +1,22 @@
 [gd_scene load_steps=3 format=3 uid="uid://c67k1y3usnwar"]
 
 [ext_resource type="PackedScene" uid="uid://c5meml58l273t" path="res://Player/Player.tscn" id="1_xw3r5"]
-[ext_resource type="PackedScene" uid="uid://fkwacc5l0t5h" path="res://World/Brick.tscn" id="1_y0plh"]
+[ext_resource type="PackedScene" uid="uid://c6mbvygedqn48" path="res://World/WorldTileMap.tscn" id="3_238y6"]
 
 [node name="World" type="Node"]
 
 [node name="Player" parent="." instance=ExtResource("1_xw3r5")]
-position = Vector2(16, 160)
+position = Vector2(64, 104)
 
-[node name="Bricks" type="Node2D" parent="."]
+[node name="CameraFollow" parent="Player" index="3"]
+remote_path = NodePath("../../Camera")
 
-[node name="Brick" parent="Bricks" instance=ExtResource("1_y0plh")]
-position = Vector2(0, 160)
+[node name="Camera" type="Camera2D" parent="."]
+position = Vector2(64, 96)
+position_smoothing_enabled = true
 
-[node name="Brick2" parent="Bricks" instance=ExtResource("1_y0plh")]
-position = Vector2(16, 160)
+[node name="WorldTileMap" parent="." instance=ExtResource("3_238y6")]
+position = Vector2(-12, -1)
+layer_0/tile_data = PackedInt32Array(655359, 65537, 1, 655361, 65537, 2, 655360, 65537, 2, 720895, 65537, 2, 720902, 65537, 1, 589823, 65537, 1, 524287, 65537, 1, 458751, 65537, 0, 458750, 1, 0, 524285, 1, 0, 655357, 1, 1, 589821, 1, 1, 720894, 65537, 2, 589822, 65537, 1, 524286, 393217, 2, 393226, 65537, 0, 393227, 458753, 2, 589832, 65537, 1, 720906, 458753, 1, 786442, 262145, 3, 786443, 65537, 3, 786445, 458753, 3, 786444, 65537, 3, 655373, 458753, 1, 720909, 196609, 1, 589837, 131073, 0, 458763, 327681, 3, 458762, 327681, 1, 524298, 131073, 1, 589833, 65537, 1, 589834, 131073, 1, 655367, 65537, 1, 786435, 65537, 2, 786434, 1, 2, 786436, 65537, 2, 786437, 65537, 2, 786438, 65537, 2, 786439, 65537, 2, 786440, 131073, 2, 655368, 65537, 1, 655358, 65537, 1, 720893, 1, 2, 458764, 458753, 0, 524300, 196609, 1, 655372, 393217, 3, 327700, 131073, 2, 262164, 131073, 0, 327699, 65537, 2, 262163, 65537, 0, 327698, 65537, 2, 262162, 65537, 0, 327697, 1, 2, 262161, 1, 0, 327694, 131073, 2, 262158, 131073, 0, 327693, 65537, 2, 262157, 65537, 0, 327692, 65537, 2, 262156, 65537, 0, 327691, 262145, 1, 262155, 1, 0, 720918, 131073, 2, 655382, 131073, 1, 589846, 131073, 1, 524310, 131073, 0, 720917, 65537, 2, 655381, 65537, 1, 589845, 65537, 1, 524309, 65537, 0, 720916, 65537, 2, 655380, 65537, 1, 589844, 65537, 1, 524308, 65537, 0, 720915, 65537, 2, 655379, 65537, 1, 589843, 65537, 1, 524307, 65537, 0, 720914, 65537, 2, 655378, 65537, 1, 589842, 65537, 1, 524306, 65537, 0, 720913, 65537, 2, 655377, 65537, 1, 589841, 65537, 1, 524305, 65537, 0, 720912, 65537, 2, 655376, 65537, 1, 589840, 65537, 1, 524304, 65537, 0, 720911, 1, 2, 655375, 1, 1, 589839, 1, 1, 524303, 1, 0, 393222, 196608, 0, 393223, 262144, 0, 393224, 65537, 0, 393225, 65537, 0, 458761, 65537, 1, 458760, 65537, 1, 458759, 65537, 1, 524294, 65537, 1, 524295, 65537, 1, 524296, 65537, 1, 524297, 65537, 1, 589831, 65537, 1, 589830, 65537, 1, 655366, 65537, 1, 655365, 65537, 1, 589829, 65537, 1, 589828, 65537, 1, 524292, 65537, 1, 524293, 65537, 1, 589827, 65537, 1, 655363, 65537, 1, 655364, 65537, 1, 720898, 65537, 1, 720899, 65537, 1, 720900, 65537, 1, 720901, 65537, 1, 589826, 65537, 1, 655362, 65537, 1, 393217, 393218, 0, 458754, 393218, 0, 458753, 327682, 0, 458758, 327680, 0, 458757, 65537, 0, 458756, 65537, 0, 393216, 65537, 0, 458752, 65537, 1, 524288, 65537, 1, 589824, 65537, 1, 589825, 65537, 1, 524289, 65537, 1, 589836, 262145, 2, 655371, 65537, 3, 655370, 327681, 4, 655369, 65537, 1, 720905, 65537, 2, 720904, 327681, 1, 720903, 65537, 1, 458755, 0, 0, 524291, 65536, 0, 524290, 327682, 0)
 
-[node name="Brick3" parent="Bricks" instance=ExtResource("1_y0plh")]
-position = Vector2(32, 160)
-
-[node name="Brick4" parent="Bricks" instance=ExtResource("1_y0plh")]
-position = Vector2(64, 144)
-
-[node name="Brick7" parent="Bricks" instance=ExtResource("1_y0plh")]
-position = Vector2(80, 160)
-
-[node name="Brick8" parent="Bricks" instance=ExtResource("1_y0plh")]
-position = Vector2(96, 160)
-
-[node name="Brick10" parent="Bricks" instance=ExtResource("1_y0plh")]
-position = Vector2(112, 160)
-
-[node name="Brick11" parent="Bricks" instance=ExtResource("1_y0plh")]
-position = Vector2(128, 160)
-
-[node name="Brick12" parent="Bricks" instance=ExtResource("1_y0plh")]
-position = Vector2(144, 160)
-
-[node name="Brick13" parent="Bricks" instance=ExtResource("1_y0plh")]
-position = Vector2(160, 160)
-
-[node name="Brick14" parent="Bricks" instance=ExtResource("1_y0plh")]
-position = Vector2(176, 160)
-
-[node name="Brick15" parent="Bricks" instance=ExtResource("1_y0plh")]
-position = Vector2(192, 160)
-
-[node name="Brick16" parent="Bricks" instance=ExtResource("1_y0plh")]
-position = Vector2(208, 160)
-
-[node name="Brick17" parent="Bricks" instance=ExtResource("1_y0plh")]
-position = Vector2(224, 160)
-
-[node name="Brick18" parent="Bricks" instance=ExtResource("1_y0plh")]
-position = Vector2(240, 160)
-
-[node name="Brick19" parent="Bricks" instance=ExtResource("1_y0plh")]
-position = Vector2(256, 160)
-
-[node name="Brick20" parent="Bricks" instance=ExtResource("1_y0plh")]
-position = Vector2(272, 160)
-
-[node name="Brick21" parent="Bricks" instance=ExtResource("1_y0plh")]
-position = Vector2(288, 160)
-
-[node name="Brick22" parent="Bricks" instance=ExtResource("1_y0plh")]
-position = Vector2(304, 160)
-
-[node name="Brick9" parent="Bricks" instance=ExtResource("1_y0plh")]
-position = Vector2(64, 160)
-
-[node name="Brick5" parent="Bricks" instance=ExtResource("1_y0plh")]
-position = Vector2(48, 144)
-
-[node name="Brick6" parent="Bricks" instance=ExtResource("1_y0plh")]
-position = Vector2(48, 160)
+[editable path="Player"]

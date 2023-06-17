@@ -25,6 +25,6 @@ window/stretch/mode="canvas_items"
 
 [rendering]
 
-textures/decals/filter=1
 textures/canvas_textures/default_texture_filter=0
 textures/canvas_textures/default_texture_repeat=1
+textures/decals/filter=1

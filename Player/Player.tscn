@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://c5meml58l273t"]
+[gd_scene load_steps=8 format=3 uid="uid://c5meml58l273t"]
 
 [ext_resource type="Script" path="res://Player/Player.gd" id="1_luk8k"]
 [ext_resource type="Texture2D" uid="uid://dqonnxhh6ho8e" path="res://Player/Player.png" id="1_wdjb3"]
@@ -6,16 +6,85 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hqus7"]
 size = Vector2(8, 14)
 
-[node name="Player" type="CharacterBody2D"]
-script = ExtResource("1_luk8k")
-FRICTION = 50
+[sub_resource type="Animation" id="Animation_4sxf7"]
+resource_name = "Idle"
+length = 1.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[sub_resource type="Animation" id="Animation_7ba3e"]
+resource_name = "Jump"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [11]
+}
+
+[sub_resource type="Animation" id="Animation_mjo8m"]
+resource_name = "Run"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [4, 5, 6, 7, 8, 9, 7]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_tpv8k"]
+_data = {
+"Idle": SubResource("Animation_4sxf7"),
+"Jump": SubResource("Animation_7ba3e"),
+"Run": SubResource("Animation_mjo8m")
+}
+
+[node name="Player" type="CharacterBody2D"]
+floor_constant_speed = true
+floor_snap_length = 2.0
+script = ExtResource("1_luk8k")
+
+[node name="Sprite" type="Sprite2D" parent="."]
 texture_filter = 1
 position = Vector2(-1, -12)
 texture = ExtResource("1_wdjb3")
 hframes = 12
+frame = 11
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-1, -7)
 shape = SubResource("RectangleShape2D_hqus7")
+
+[node name="SpriteAnimator" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_tpv8k")
+}
+
+[node name="CameraFollow" type="RemoteTransform2D" parent="."]
+position = Vector2(0, -8)
+update_rotation = false
+update_scale = false
