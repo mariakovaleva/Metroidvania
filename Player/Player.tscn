@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://c5meml58l273t"]
+[gd_scene load_steps=9 format=3 uid="uid://c5meml58l273t"]
 
 [ext_resource type="Script" path="res://Player/Player.gd" id="1_luk8k"]
 [ext_resource type="Texture2D" uid="uid://dqonnxhh6ho8e" path="res://Player/Player.png" id="1_wdjb3"]
+[ext_resource type="PackedScene" uid="uid://cvnq10aya6qkv" path="res://Player/PlayerBlaster.tscn" id="3_kb55e"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hqus7"]
 size = Vector2(8, 14)
@@ -55,6 +56,23 @@ tracks/0/keys = {
 "update": 1,
 "values": [4, 5, 6, 7, 8, 9, 7]
 }
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.3, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"create_dust_effect"
+}, {
+"args": [],
+"method": &"create_dust_effect"
+}]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_tpv8k"]
 _data = {
@@ -68,12 +86,22 @@ floor_constant_speed = true
 floor_snap_length = 2.0
 script = ExtResource("1_luk8k")
 
+[node name="PlayerBlaster" parent="." instance=ExtResource("3_kb55e")]
+show_behind_parent = true
+position = Vector2(1, -8)
+
 [node name="Sprite" type="Sprite2D" parent="."]
 texture_filter = 1
 position = Vector2(-1, -12)
 texture = ExtResource("1_wdjb3")
 hframes = 12
-frame = 11
+frame = 4
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Sprite"]
+position = Vector2(2, 4)
+remote_path = NodePath("../../PlayerBlaster")
+update_rotation = false
+update_scale = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-1, -7)
@@ -84,7 +112,8 @@ libraries = {
 "": SubResource("AnimationLibrary_tpv8k")
 }
 
-[node name="CameraFollow" type="RemoteTransform2D" parent="."]
-position = Vector2(0, -8)
-update_rotation = false
-update_scale = false
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="CoyoteJumpTimer" type="Timer" parent="."]
+wait_time = 0.15
+one_shot = true
